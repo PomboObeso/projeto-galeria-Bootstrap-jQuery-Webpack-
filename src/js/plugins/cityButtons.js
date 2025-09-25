@@ -1,5 +1,7 @@
 import $ from 'jquery'
 
+import { onLoadHtmlSuccess } from '../core/includes'
+
 const duration = 600
 
 function filterByCity(city) {
@@ -34,11 +36,13 @@ $.fn.cityButtons = function() {
     
     btns.push(btnAll)
     
-    const btnGroup = $('<div>').addClass('btn-group') //TODO Quero testar se funfa sem colchetes, se der ruim é só colocar colchetes
+    const btnGroup = $('<div>').addClass('btn-group') 
     btnGroup.append(btns)
     
     $(this).html(btnGroup)
     return this
 }
 
-$('[wm-city-buttons]').cityButtons()
+onLoadHtmlSuccess(function () {
+    $('[wm-city-buttons]').cityButtons()
+})
